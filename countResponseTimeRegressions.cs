@@ -1,21 +1,22 @@
-﻿Console.WriteLine(countResponseTimeRegressions([100, 200, 150,300]));
-
-static int countResponseTimeRegressions(List<int> responseTimes)
+﻿public static class CountResponseTimeRegressions
 {
-    if (responseTimes.Count < 2)
+    public static int Run(List<int> responseTimes)
     {
-        return 0;
-    }
-
-    int result = 0;
-    for (int i = 1; i < responseTimes.Count; i++)
-    {
-        if (responseTimes[i] > responseTimes.GetRange(0, i).Average())
+        if (responseTimes.Count < 2)
         {
-            result++;
+            return 0;
         }
-    }
 
-    return result;
-    
+        int result = 0;
+        for (int i = 1; i < responseTimes.Count; i++)
+        {
+            if (responseTimes[i] > responseTimes.GetRange(0, i).Average())
+            {
+                result++;
+            }
+        }
+
+        return result;
+
+    }
 }
